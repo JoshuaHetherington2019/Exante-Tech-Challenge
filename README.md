@@ -23,6 +23,7 @@ docker build --tag=verifit-server-1.0.0:latest .
 ...
 
 docker run -d -p 8000:8000 verifit-server-1.0.0:latest
+...
 ```
 ## Testing
 `Verifit Collection.postman_collection.json` file can be imported into your Postman tool for testing and confirmation of the applications REST API's.
