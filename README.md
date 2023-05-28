@@ -10,11 +10,15 @@ The application has a dockerfile for deploying in a container, see Dockerfile fo
 ## Software used
 - Java 8 / OpenJDK 1.8
 - Docker v23.0.5
+- Apache Maven v3.9.1
 
 ## Usage
-Terminal commands to build and run the docker instance (-d flag for detached mode). The
+Terminal commands to build and run the app & docker instance (-d flag for detached mode). `Note` the
 `application.properties` file sets the server port of the application.
 ```shell
+mvn clean package
+...
+
 docker build --tag=verifit-server-1.0.0:latest .
 ...
 
