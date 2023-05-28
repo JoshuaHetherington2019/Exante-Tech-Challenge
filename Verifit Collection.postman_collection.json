@@ -29,112 +29,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Get a member by id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/api/v1/members/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"members",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add new member",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"lastAttendanceDate\": \"2023-05-27T14:43:24.069\"\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/v1/members",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"members"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update member",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"lastAttendanceDate\": \"2023-05-25T14:43:24.069\",\r\n    \"currentStreak\": 4,\r\n    \"discountStatus\": true,\r\n    \"membershipId\": \"1\"\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8000/api/v1/members",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"members"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove a member",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/api/v1/members/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"members",
-								"1"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -174,7 +68,7 @@
 				}
 			],
 			"request": {
-				"method": "PUT",
+				"method": "PATCH",
 				"header": [
 					{
 						"key": "Content-Type",
