@@ -51,12 +51,12 @@ class MemberControllerTests {
     }
 
     @Test
-    public void PutMappingOfMembersAttendance() throws Exception {
+    public void PatchMappingOfMembersAttendance() throws Exception {
         doNothing()
                 .when(memberService)
                 .updateMembersAttendance(member.getMembershipId(), member.getLastAttendanceDate());
 
-        mockMvc.perform(put("/api/v1/members/0/attendance")
+        mockMvc.perform(patch("/api/v1/members/0/attendance")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(member)))
                 .andExpect(status().isNoContent());

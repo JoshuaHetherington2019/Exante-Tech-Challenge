@@ -28,7 +28,7 @@ public class MemberController {
         memberService.generateDBEntries();
     }
 
-    @PutMapping("/members/{membershipId}/attendance")
+    @PatchMapping("/members/{membershipId}/attendance")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateMembersAttendance(@PathVariable("membershipId") @Positive Long membershipId, @Valid @RequestBody Member member) {
         memberService.updateMembersAttendance(membershipId, member.getLastAttendanceDate());
@@ -73,27 +73,4 @@ public class MemberController {
         return memberService.getAllMembers();
     }
 
-    @GetMapping("/members/{membershipId}")
-    @ResponseStatus(HttpStatus.OK)
-    public Member getMemberById(@PathVariable Long membershipId) {
-        return memberService.getMemberById(membershipId);
-    }
-
-    @PostMapping("/members")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void addMember(@Valid @RequestBody Member member) {
-        memberService.addMember(member);
-    }
-
-    @PutMapping("/members")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateMember(@Valid @RequestBody Member member) {
-        memberService.updateMember(member);
-    }
-
-    @DeleteMapping("/members/{membershipId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteMember(@PathVariable Long membershipId) {
-        memberService.removeMemberById(membershipId);
-    }
 }

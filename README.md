@@ -17,18 +17,18 @@ Terminal commands to build and run the app & docker instance (-d flag for detach
 `application.properties` file sets the server port of the application.
 ```shell
 mvn clean package
-...
 
 docker build --tag=verifit-server-1.0.0:latest .
-...
 
 docker run -d -p 8000:8000 verifit-server-1.0.0:latest
-...
 ```
 ## Testing
 `Verifit Collection.postman_collection.json` file can be imported into your Postman tool for testing and confirmation of the applications REST API's.
 
 Recommend running the `Populate DB` request to add Members to the embedded DB. Can also use the `Retrieve all members` request inside the `Additional Basic API's` folder to view the Members.
+
+## Unit test
+The unit tests will show in the terminal when running `mvn clean package`, to run the unit testing separately run `mvn clean test`. 
 
 ## OpenAPI Definition
 Swagger docs will be auto-generated for the project when run. Go to: `http://localhost:8000/swagger-ui.html` to view.
