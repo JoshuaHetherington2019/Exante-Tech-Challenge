@@ -1,7 +1,7 @@
 # Exante Coding Challenge
 
 ## Verifit 
-Verifit is a gym tracking application that manages members discounts by capturing attendance records and applying a discount when member goes at least once a week for 3 weeks in a row to get a streak.
+Verifit is a gym tracking application that manages members discounts by capturing attendance records and applying a discount when member goes at least once a week for 4 weeks or more in a row to get a streak.
 
 ## Details
 Java 8 Spring Boot web application with an embedded Hibernate database( doesn't persist between runs ).
