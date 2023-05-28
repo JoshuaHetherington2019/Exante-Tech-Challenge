@@ -49,29 +49,56 @@ class MemberControllerTests {
     void tearDown() {
         member = null;
     }
+
+    @Test
+    public void PutMappingOfMembersAttendance() throws Exception {
+        doNothing()
+                .when(memberService)
+                .updateMembersAttendance(member.getMembershipId(), member.getLastAttendanceDate());
+
+        mockMvc.perform(put("/api/v1/members/0/attendance")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(member)))
+                .andExpect(status().isNoContent());
+
+        verify(memberService,times(1)).updateMembersAttendance(any(), any());
+    }
+    @Test
+    public void GetMappingOfMembersDiscountById() throws Exception {
+        when(memberService.getMembersDiscountStatusById(member.getMembershipId()))
+                .thenReturn("Members discount status: " + member.getDiscountStatus());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/members/0/discount")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(member)))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    public void GetMappingOfMembersCurrentStreakById() throws Exception {
+        when(memberService.getMembersStreakStatusById(member.getMembershipId()))
+                .thenReturn("Members current streak: " + member.getCurrentStreak());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/members/0/streak")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(member)))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print());
+    }
+
     @Test
     public void GetMappingOfAllMembers() throws Exception {
         when(memberService.getAllMembers()).thenReturn(members);
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/members")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(member)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(member)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print());
 
         verify(memberService).getAllMembers();
         verify(memberService,times(1)).getAllMembers();
     }
-
-
-//    @Test
-//    public void PostMappingOfMember() throws Exception {
-//        when(memberService.updateMembersAttendance(any(), any())).thenReturn(member);
-//        mockMvc.perform(put("/api/v1/members/1/attendance")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(asJsonString(member)))
-//                .andExpect(status().isNoContent());
-//        verify(memberService,times(1)).addMember(any());
-//    }
 
     public static String asJsonString(final Object obj){
         ObjectMapper objectMapper = new ObjectMapper()
